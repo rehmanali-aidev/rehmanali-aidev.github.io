@@ -1,5 +1,4 @@
 
-
 document.body.addEventListener('click', (e) => {
     const themeIcon = e.target.closest('.toggle-theme');
     if (!themeIcon) return;
@@ -21,4 +20,15 @@ document.body.addEventListener('click', (e) => {
        visualIcon.classList.add('fa-sun');
    }
 });
+
+const siteNav = document.querySelector('.nav');
+const heroTitle = document.querySelector('.hero-title');
+if (siteNav && heroTitle) {
+    const updateStickyNav = () => {
+        siteNav.classList.toggle('is-sticky', heroTitle.getBoundingClientRect().top <= -100);
+    };
+
+    window.addEventListener('scroll', updateStickyNav, { passive: true });
+    updateStickyNav();
+}
 
