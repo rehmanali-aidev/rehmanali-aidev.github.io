@@ -1,4 +1,5 @@
 :root {
+  cursor: none;
   --ink: #14161a;
   --muted: #3d4354;
   --line: #e3e6ee;
@@ -44,8 +45,19 @@ body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--ink);
+  position: relative;
   background: var(--bg-main);
+  min-height: 100vh;
 }
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(20px circle  at var(--x, 70%) var(--y, 50%), rgb(0, 0, 255),rgb(0, 255, 255)90% , transparent 100%);
+  pointer-events: none;
+}
+
 
 ul {
   list-style: none;
@@ -61,10 +73,13 @@ a {
   margin: 0 auto;
 }
 .site-header {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(120deg, #ffffff, #dde9ff, #9ec6cd, #00e1ff, #044eedcd, #00ffb3, #ffffff);
   background-size: 400% 400%;
   animation: header-flow 14s ease-in-out infinite;
 }
+
 
 body.dark-theme .site-header {
   background: linear-gradient(120deg, #1d222b, #172333, #19323a, #110c21, #100b0e, #050911);
@@ -183,13 +198,13 @@ body.dark-theme .site-header {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  transition: background-position 0.8s ease;
+  transform: scale(1) rotate(0deg);
+  transition: background-position 0.8s ease , transform 0.8s ease;
 }
 
 .hero-name:hover {
   background-position: 100% 100%;
-  transform:scale(1.03),rotate(10px);
-  border: 2px so ;
+  transform: scale(1.05) rotate(-3deg);
 }
 
 body.dark-theme .hero-name {

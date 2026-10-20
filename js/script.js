@@ -1,5 +1,7 @@
+const body = document.body;
+const header = document.querySelector('.site-header')
 
-document.body.addEventListener('click', (e) => {
+body.addEventListener('click', (e) => {
     const themeIcon = e.target.closest('.toggle-theme');
     if (!themeIcon) return;
     const visualIcon = themeIcon.previousElementSibling;
@@ -29,6 +31,15 @@ if (siteNav && heroTitle) {
     };
 
     window.addEventListener('scroll', updateStickyNav, { passive: true });
-    updateStickyNav();
 }
 
+header.addEventListener('mousemove',(event)=>{
+    const box = header.getBoundingClientRect();
+     header.style.setProperty('--x', event.clientX-box.left +'px')
+    header.style.setProperty('--y', event.clientY -box.top +'px')
+    
+})
+window.addEventListener('mousemove',(event)=>{
+    body.style.setProperty('--x', event.clientX+'px')
+    body.style.setProperty('--y', event.clientY+'px')
+})
