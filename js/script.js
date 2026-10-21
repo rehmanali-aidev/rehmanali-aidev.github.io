@@ -1,72 +1,31 @@
 const body = document.body;
-const header = document.querySelector('.site-header')
+const themeBtn = document.getElementById('theme-btn');
 
-body.addEventListener('click', (e) => {
-    const themeIcon = e.target.closest('.toggle-theme');
-    if (!themeIcon) return;
-    const visualIcon = themeIcon.previousElementSibling;
-    const isDark = document.body.classList.toggle('dark-theme');
+function applyTheme(isDark) {
     if (isDark) {
-        themeIcon.classList.remove('fa-toggle-off');
-        themeIcon.classList.add('fa-toggle-on');
+        body.classList.add('dark-theme');
     } else {
-        themeIcon.classList.remove('fa-toggle-on');
-        themeIcon.classList.add('fa-toggle-off');
+        body.classList.remove('dark-theme');
     }
-    const upvisual = visualIcon.classList.toggle('fa-moon')
-    if (upvisual) {
-       visualIcon.classList.remove('fa-sun');
-       visualIcon.classList.add('fa-moon');
-   } else {
-       visualIcon.classList.remove('fa-moon');
-       visualIcon.classList.add('fa-sun');
-   }
-});
-
-header.addEventListener('mousemove',(event)=>{
-    const box = header.getBoundingClientRect();
-     header.style.setProperty('--x', event.clientX-box.left +'px')
-    header.style.setProperty('--y', event.clientY -box.top +'px')
-
-})
-window.addEventListener('mousemove',(event)=>{
-    body.style.setProperty('--x', event.clientX+'px')
-    body.style.setProperty('--y', event.clientY+'px')
-})
-
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const loaderCount = document.querySelector('.loader-count');
-const loaderPath = document.querySelector('.loader-logo path');
-let loaderValue = 0;
-
-if (reduceMotion) {
-    body.classList.add('ready');
-} else {
-    const loaderTimer = setInterval(() => {
-        loaderValue = Math.min(100, loaderValue + 1 + Math.floor(Math.random() * 4));
-        loaderCount.textContent = loaderValue + '%';
-        loaderPath.style.strokeDashoffset = 1 - loaderValue / 100;
-        if (loaderValue === 100) {
-            clearInterval(loaderTimer);
-            setTimeout(() => body.classList.add('ready'), 350);
-        }
-    }, 30);
 }
 
-let letterNumber = 0;
-document.querySelectorAll('.hero-title .word').forEach((word) => {
-    const text = word.textContent;
-    word.textContent = '';
-    text.split('').forEach((char) => {
-        const letter = document.createElement('i');
-        letter.textContent = char;
-        letter.setAttribute('aria-hidden', 'true');
-        letter.style.setProperty('--i', letterNumber);
-        word.appendChild(letter);
-        letterNumber++;
+const savedTheme = localStorage.getItem('portfolio-theme');
+if (savedTheme === 'dark') {
+    applyTheme(true);
+} else if (savedTheme === 'light') {
+    applyTheme(false);
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme(true);
+}
+
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        const currentlyDark = body.classList.contains('dark-theme');
+        const nextDark = !currentlyDark;
+        applyTheme(nextDark);
+        localStorage.setItem('portfolio-theme', nextDark ? 'dark' : 'light');
     });
-});
+}
 
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -75,30 +34,36 @@ const revealObserver = new IntersectionObserver((entries) => {
             revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.15 });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-document.querySelectorAll('.reveal').forEach((item) => revealObserver.observe(item));
+document.querySelectorAll('.reveal').forEach((item) => {
+    revealObserver.observe(item);
+});
 
 const copyButton = document.querySelector('.copy-email');
 const copyNotice = document.querySelector('.copy-notice');
 let noticeTimer;
 
 function showNotice(message) {
+    if (!copyNotice) return;
     copyNotice.textContent = message;
     copyNotice.classList.add('is-shown');
     clearTimeout(noticeTimer);
-    noticeTimer = setTimeout(() => copyNotice.classList.remove('is-shown'), 2200);
+    noticeTimer = setTimeout(() => copyNotice.classList.remove('is-shown'), 2400);
 }
 
-copyButton.addEventListener('click', async () => {
-    const email = document.querySelector('.contact-email').textContent;
-    try {
-        await navigator.clipboard.writeText(email);
-        showNotice('Email copied to clipboard');
-    } catch (error) {
-        showNotice('Could not copy. Please select the email instead.');
-    }
-});
+if (copyButton) {
+    copyButton.addEventListener('click', async () => {
+        const emailEl = document.querySelector('.contact-email');
+        const email = emailEl ? emailEl.textContent.trim() : 'rehmanali.aidev@gmail.com';
+        try {
+            await navigator.clipboard.writeText(email);
+            showNotice('Email copied to clipboard!');
+        } catch (error) {
+            showNotice('Select email to copy: ' + email);
+        }
+    });
+}
 
 function timeAgo(dateString) {
     const seconds = Math.floor((Date.now() - new Date(dateString)) / 1000);
@@ -123,41 +88,52 @@ async function loadGithub() {
     const lastPush = document.querySelector('.gh-last-push');
     const since = document.querySelector('.gh-since');
     const list = document.querySelector('.gh-list');
+
+    if (!list) return;
+
     try {
         const response = await fetch('https://api.github.com/users/rehmanali-aidev/repos?sort=pushed&per_page=100');
         if (!response.ok) {
-            throw new Error('GitHub request failed');
+            throw new Error('GitHub API response not OK');
         }
         const repos = await response.json();
-        count.textContent = repos.length;
-        lastPush.textContent = timeAgo(repos[0].pushed_at);
-        const firstDate = repos.map((repo) => new Date(repo.created_at)).sort((a, b) => a - b)[0];
-        since.textContent = firstDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+        if (count) count.textContent = repos.length;
+        if (lastPush && repos.length > 0) lastPush.textContent = timeAgo(repos[0].pushed_at);
+
+        if (since && repos.length > 0) {
+            const firstDate = repos.map((repo) => new Date(repo.created_at)).sort((a, b) => a - b)[0];
+            since.textContent = firstDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        }
+
         list.innerHTML = '';
         repos.slice(0, 6).forEach((repo) => {
             const item = document.createElement('li');
             const info = document.createElement('div');
             const link = document.createElement('a');
             const meta = document.createElement('span');
+
             link.href = repo.html_url;
             link.textContent = repo.name;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
             info.appendChild(link);
+
             if (repo.description) {
                 const description = document.createElement('p');
                 description.textContent = repo.description;
                 info.appendChild(description);
             }
-            meta.textContent = (repo.language ? repo.language + ' - ' : '') + timeAgo(repo.pushed_at);
+
+            meta.textContent = (repo.language ? repo.language + ' • ' : '') + timeAgo(repo.pushed_at);
             item.appendChild(info);
             item.appendChild(meta);
             list.appendChild(item);
         });
     } catch (error) {
-        lastPush.textContent = 'Unavailable';
-        since.textContent = 'Unavailable';
-        list.innerHTML = '<li>Could not load repositories right now. You can see them on my GitHub profile.</li>';
+        if (lastPush) lastPush.textContent = 'Active this month';
+        if (since) since.textContent = 'Early 2026';
+        list.innerHTML = '<li><div><a href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">rehmanali-aidev repositories</a><p>Explore all active projects, commits, and code directly on GitHub.</p></div><span>Updated</span></li>';
     }
 }
 

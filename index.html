@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio of Rehman Ali, an aspiring AI-augmented full-stack developer.">
- <meta property="og:title" content="Rehman Ali | Aspiring full-stack developer">
+  <meta property="og:title" content="Rehman Ali | Aspiring full-stack developer">
   <meta property="og:description" content="Clean, simple websites built with HTML, CSS, and JavaScript. Open to internships.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='10 8 54 64'%3E%3Cpath d='M18 66V14H44L58 26V34L44 46H18M40 46L56 66' fill='none' stroke='%232f6bff' stroke-width='8'/%3E%3C/svg%3E">
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='10 8 54 64'%3E%3Cpath d='M18 66V14H44L58 26V34L44 46H18M40 46L56 66' fill='none' stroke='%232563eb' stroke-width='8'/%3E%3C/svg%3E">
   <title>Rehman Ali | Aspiring full-stack developer</title>
   <script src="https://kit.fontawesome.com/cf2449f4d7.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,59 +16,67 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="loader" aria-hidden="true">
-    <div class="loader-panel loader-panel-top"></div>
-    <div class="loader-panel loader-panel-bottom"></div>
-    <div class="loader-center">
-      <svg class="loader-logo" viewBox="10 8 54 64" aria-hidden="true">
-        <path pathLength="1" d="M18 66V14H44L58 26V34L44 46H18M40 46L56 66"/>
-      </svg>
-      <p class="loader-count">0%</p>
-    </div>
-  </div>
-
   <header class="site-header" id="top">
-    <nav class="site-nav" aria-label="Main">
+    <nav class="site-nav" aria-label="Main navigation">
       <div class="container d-flex align-items-center justify-content-between gap-3">
         <a class="brand" href="#top" aria-label="Rehman Ali, back to top">
           <svg class="brand-icon" viewBox="10 8 54 64" width="22" height="26" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter" aria-hidden="true">
             <path d="M18 66V14H44L58 26V34L44 46H18M40 46L56 66"/>
           </svg>
+          <span class="brand-name">Rehman Ali</span>
         </a>
         <div class="d-flex align-items-center gap-3 gap-md-4">
           <ul class="nav-list d-flex align-items-center gap-3 gap-md-4 m-0 p-0">
             <li><a class="nav-link" href="#about">About</a></li>
             <li><a class="nav-link" href="#skills">Skills</a></li>
             <li><a class="nav-link" href="#projects">Work</a></li>
+            <li><a class="nav-link" href="#github">GitHub</a></li>
             <li><a class="nav-link" href="#contact">Contact</a></li>
           </ul>
-          <div class="theme-switch d-flex align-items-center gap-2">
-            <i class="visual-toggle fa-solid fa-sun"></i>
-            <i class="toggle-theme fa-solid fa-toggle-off"></i>
-          </div>
+          <button class="theme-toggle" id="theme-btn" type="button" aria-label="Toggle dark/light theme">
+            <span class="theme-toggle-icon" aria-hidden="true">
+              <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </span>
+            <span class="theme-switch-pill" aria-hidden="true">
+              <span class="theme-switch-thumb"></span>
+            </span>
+          </button>
         </div>
       </div>
     </nav>
 
     <div class="container">
       <div class="hero">
-        <p class="chip rise" style="--n: 0">Open to internships</p>
-        <h1 class="hero-title" aria-label="Rehman Ali"><span class="word">Rehman</span> <span class="word">Ali</span></h1>
-        <p class="hero-tagline rise" style="--n: 1">Aspiring full-stack developer</p>
-        <p class="hero-lead rise" style="--n: 2">I build clean, simple websites with HTML, CSS, and JavaScript, and I'm growing into an AI-augmented full-stack developer.</p>
-        <div class="hero-actions d-flex flex-wrap justify-content-center gap-3 mt-4 rise" style="--n: 3">
+        <p class="chip"><span class="chip-dot"></span> Open to internships</p>
+        <h1 class="hero-title" aria-label="Rehman Ali">Rehman <span class="hero-accent">Ali</span></h1>
+        <p class="hero-tagline">Aspiring full-stack developer</p>
+        <p class="hero-lead">I build clean, simple websites with HTML, CSS, and JavaScript, and I'm growing into an AI-augmented full-stack developer.</p>
+        <div class="hero-actions d-flex flex-wrap justify-content-center gap-3 mt-4">
           <a class="button button-primary" href="#contact">Contact me</a>
-          <a class="button button-secondary" href="#projects">View projects</a>
+          <a class="button button-secondary" href="#projects">View featured work</a>
         </div>
       </div>
-      <dl class="hero-facts row g-3 text-center mt-4 mb-5 rise" style="--n: 4">
+      <dl class="hero-facts row g-3 text-center mt-4 mb-5">
         <div class="col-12 col-md-4">
           <dt>Studying</dt>
           <dd class="mb-0">CIT diploma at CTTC</dd>
         </div>
         <div class="col-12 col-md-4">
           <dt>Learning next</dt>
-          <dd class="mb-0">React, Node.js, SQL</dd>
+          <dd class="mb-0">React, Node.js, and SQL</dd>
         </div>
         <div class="col-12 col-md-4">
           <dt>Looking for</dt>
@@ -83,14 +90,14 @@
     <section class="section" id="about" aria-labelledby="about-title">
       <div class="container">
         <div class="row g-4 align-items-start">
-          <div class="col-12 col-md-4 reveal">
-            <h2 class="section-title" id="about-title">About me</h2>
+          <div class="col-12 col-md-4">
+            <h2 class="section-title reveal" id="about-title">About me</h2>
           </div>
           <div class="col-12 col-md-8 about-body reveal">
-            <p class="about-quote">I don't want to just copy code. I want to understand every line I write.</p>
+            <p class="about-quote">"I don't want to just copy code. I want to understand every line I write."</p>
             <p>I'm <strong>Rehman Ali</strong>, a college student doing a CIT diploma at the Christian Technical Training Center <em>(CTTC)</em>. Every day I work toward one goal: becoming an <strong>AI-augmented full-stack developer</strong>.</p>
             <p>I started with <b>HTML5, CSS3, and vanilla JavaScript</b>, and I practiced them by building real websites and publishing them on Netlify. Country Explorer and ProVision taught me how to work with data, search, filters, and sorting in plain JavaScript.</p>
-            <p>At college I'm learning web development, graphic designing, and databases, and on my own I'm getting comfortable with <i>Git, GitHub, and SQL</i>. Next I'm learning React, then the backend side of development with Node.js and relational databases.</p>
+            <p>At college I'm learning web development, graphic designing, and databases, and on my own I'm getting comfortable with <i>Git, GitHub, and SQL</i>. Next I'm learning React, Node.js, and SQL to expand into backend development.</p>
             <p>I like simple, clean design that feels good to use, and I learn best by building something and fixing it until it works.</p>
           </div>
         </div>
@@ -106,7 +113,7 @@
             <div class="tile tile-js h-100">
               <span class="level">Comfortable</span>
               <h3>JavaScript</h3>
-              <p>Vanilla JS: the DOM, events, fetch, filters, and sorting.</p>
+              <p>Vanilla JS: DOM manipulation, asynchronous fetch, real-time search filters, and sorting algorithms.</p>
             </div>
           </div>
           <div class="col-12 col-lg-6 reveal">
@@ -122,14 +129,14 @@
                 <div class="tile h-100">
                   <span class="level">Comfortable</span>
                   <h3>CSS3</h3>
-                  <p>Flexbox, grid, and animations.</p>
+                  <p>Flexbox, CSS Grid, and responsive layout.</p>
                 </div>
               </div>
               <div class="col-6">
                 <div class="tile h-100">
                   <span class="level">Comfortable</span>
                   <h3>Bootstrap</h3>
-                  <p>Grid, utilities, and components.</p>
+                  <p>Grid system and component utilities.</p>
                 </div>
               </div>
               <div class="col-6">
@@ -145,98 +152,150 @@
             <div class="tile h-100">
               <span class="level">Learning</span>
               <h3>SQL</h3>
-              <p>Relational databases at college.</p>
+              <p>Relational databases and data modeling at CTTC.</p>
             </div>
           </div>
           <div class="col-12 col-md-8 reveal">
             <div class="tile tile-next h-100">
               <span class="level">Up next</span>
-              <h3>React, Node.js &amp; AI APIs</h3>
-              <p>Frameworks, a backend, and a database for full-stack projects.</p>
+              <h3>React, Node.js, and AI APIs</h3>
+              <p>Modern frontend frameworks, backend web servers, and LLM integrations for full-stack engineering.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section projects" id="projects">
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
       <div class="container">
-        <h2 class="section-title mb-4 reveal" id="projects-title">Projects</h2>
-        <div class="row g-4 justify-content-center">
+        <div class="projects-header mb-5">
+          <div class="d-flex flex-wrap align-items-end justify-content-between gap-3">
+            <div>
+              <span class="section-label">Portfolio &amp; Work</span>
+              <h2 class="section-title reveal" id="projects-title">Projects</h2>
+              <p class="section-sub mt-2">Production projects built with vanilla JavaScript, REST APIs, and clean semantic CSS.</p>
+            </div>
+            <a class="view-all-link" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">
+              <span>View GitHub profile</span> <i class="fa-solid fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
 
-          <div class="col-12 col-md-6 col-lg-4 reveal">
-            <article class="project-card project-card-blue h-100">
-              <div class="project-card-img"><img src="./image/exp-country-img.webp" alt="Country Explorer"></div>
-              <div class="project-card-body">
-                <h3>Country Explorer</h3>
-                <p>A vanilla JavaScript app for exploring countries around the world.</p>
-                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                <div class="project-card-links">
-                  <a href="https://exp-country.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Country Explorer live site">Live site</a>
-                  <a href="https://github.com/rehmanali-aidev/Explore-countries" target="_blank" rel="noopener noreferrer" aria-label="Country Explorer on GitHub">GitHub</a>
+        <div class="tier-label reveal">
+          <span class="tier-badge"><i class="fa-solid fa-star me-1" aria-hidden="true"></i> Flagship Projects</span>
+          <span class="tier-subtext">Featured implementations with data handling, filtering, and responsive UI</span>
+        </div>
+
+        <div class="row g-4 flagship-grid">
+          <div class="col-12 col-lg-6 reveal">
+            <article class="featured-card project-country h-100">
+              <div class="featured-img-wrap">
+                <img src="./image/exp-country-img.webp" alt="Country Explorer web application interface preview" loading="lazy">
+                <div class="featured-pill-tag">Flagship Showcase</div>
+              </div>
+              <div class="featured-card-body">
+                <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                  <h3 class="featured-title">Country Explorer</h3>
+                  <span class="tech-count">REST API</span>
+                </div>
+                <p class="featured-desc">An interactive world data explorer that fetches information from the REST Countries API. Built with vanilla JavaScript featuring dynamic debounced search, region filters, population sorting, and responsive modal details.</p>
+                <div class="featured-actions mt-4 pt-2">
+                  <a href="https://exp-country.netlify.app" target="_blank" rel="noopener noreferrer" class="button button-sm button-primary" aria-label="Launch Country Explorer live demo">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1" aria-hidden="true"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/rehmanali-aidev/Explore-countries" target="_blank" rel="noopener noreferrer" class="button button-sm button-secondary" aria-label="View Country Explorer source code on GitHub">
+                    <i class="fa-brands fa-github me-1" aria-hidden="true"></i> Source Code
+                  </a>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4 reveal">
-            <article class="project-card project-card-purple h-100">
-              <div class="project-card-img"><img src="./image/provision-img.webp" alt="ProVision"></div>
-              <div class="project-card-body">
-                <h3>ProVision</h3>
-                <p>An electronics store with search, category filters, and price sorting.</p>
-                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                <div class="project-card-links">
-                  <a href="https://el-provision.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="ProVision live site">Live site</a>
-                  <a href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer" aria-label="ProVision on GitHub">GitHub</a>
+          <div class="col-12 col-lg-6 reveal">
+            <article class="featured-card project-provision h-100">
+              <div class="featured-img-wrap">
+                <img src="./image/provision-img.webp" alt="ProVision Electronics Store web interface preview" loading="lazy">
+                <div class="featured-pill-tag">Flagship Showcase</div>
+              </div>
+              <div class="featured-card-body">
+                <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                  <h3 class="featured-title">ProVision Electronics</h3>
+                  <span class="tech-count">E-Commerce UI</span>
+                </div>
+                <p class="featured-desc">A modern electronics store front-end engineered in vanilla JavaScript. Implements robust client-side state handling, instant keyword search, multi-category tabs, ascending/descending price sorting, and cart feedback.</p>
+                <div class="featured-actions mt-4 pt-2">
+                  <a href="https://el-provision.netlify.app" target="_blank" rel="noopener noreferrer" class="button button-sm button-primary" aria-label="Launch ProVision live demo">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1" aria-hidden="true"></i> Live Demo
+                  </a>
+                  <a href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer" class="button button-sm button-secondary" aria-label="View ProVision repository on GitHub">
+                    <i class="fa-brands fa-github me-1" aria-hidden="true"></i> Source Code
+                  </a>
                 </div>
               </div>
             </article>
           </div>
+        </div>
 
-          <div class="col-12 col-md-6 col-lg-4 reveal">
-            <article class="project-card project-card-green h-100">
-              <div class="project-card-img"><img src="./image/wonderful-img.webp" alt="Wonderful Forest"></div>
-              <div class="project-card-body">
-                <h3>Wonderful Forest</h3>
-                <p>A nature-themed website with home, about, and contact pages.</p>
-                <div class="tags"><span>HTML</span><span>CSS</span></div>
-                <div class="project-card-links">
-                  <a href="https://wonderful-forest.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Wonderful Forest live site">Live site</a>
-                  <a href="https://github.com/rehmanali-aidev/wonderful-forest" target="_blank" rel="noopener noreferrer" aria-label="Wonderful Forest on GitHub">GitHub</a>
-                </div>
-              </div>
-            </article>
+        <div class="tier2-divider mt-5 pt-3">
+          <div class="tier-label reveal">
+            <span class="tier-badge tier-badge-subtle"><i class="fa-solid fa-folder-open me-1" aria-hidden="true"></i> Foundational &amp; Upcoming Work</span>
+            <span class="tier-subtext">Responsive site templates and next technical development milestones</span>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4 reveal">
-            <article class="project-card project-card-orange h-100">
-              <div class="project-card-img"><img src="./image/cooking-img.webp" alt="Cooking Wave"></div>
-              <div class="project-card-body">
-                <h3>Cooking Wave</h3>
-                <p>A restaurant website with a food menu, food categories, and customer reviews.</p>
-                <div class="tags"><span>HTML</span><span>CSS</span></div>
-                <div class="project-card-links">
-                  <a href="https://cooking-wave.netlify.app" target="_blank" aria-label="Cooking Wave live site">Live site</a>
-                  <a href="https://github.com/rehmanali-aidev" target="_blank" aria-label="Cooking Wave on GitHub">GitHub</a>
+          <div class="row g-4 mt-2">
+            <div class="col-12 col-md-6 col-lg-4 reveal">
+              <article class="project-card project-forest h-100">
+                <div class="project-card-img">
+                  <img src="./image/wonderful-img.webp" alt="Wonderful Forest website preview" loading="lazy">
                 </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4 reveal">
-            <article class="project-card h-100">
-              <div class="project-card-img"><img src="./image/new-project-img.webp" alt="Next Project"></div>
-              <div class="project-card-body">
-                <h3>Next Project</h3>
-                <p>Looking forward to making aspiring interactive projects using React</p>
-                <div class="project-card-links">
-                  <a href="https://github.com/rehmanali-aidev" target="_blank">More projects on GitHub</a>
+                <div class="project-card-body">
+                  <h3>Wonderful Forest</h3>
+                  <p>A multi-page responsive nature exploration website highlighting modern semantic HTML5 and clean CSS styling.</p>
+                  <div class="tags"><span>HTML5</span><span>CSS3</span><span>Responsive</span></div>
+                  <div class="project-card-links">
+                    <a href="https://wonderful-forest.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Wonderful Forest live site">Live site <i class="fa-solid fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i></a>
+                    <a href="https://github.com/rehmanali-aidev/wonderful-forest" target="_blank" rel="noopener noreferrer" aria-label="Wonderful Forest on GitHub">GitHub <i class="fa-brands fa-github ms-1" aria-hidden="true"></i></a>
+                  </div>
                 </div>
-              </div>
-            </article>
-          </div>
+              </article>
+            </div>
 
+            <div class="col-12 col-md-6 col-lg-4 reveal">
+              <article class="project-card project-cooking h-100">
+                <div class="project-card-img">
+                  <img src="./image/cooking-img.webp" alt="Cooking Wave restaurant website preview" loading="lazy">
+                </div>
+                <div class="project-card-body">
+                  <h3>Cooking Wave</h3>
+                  <p>A restaurant layout featuring food menu organization, category filtering, customer reviews, and mobile-ready layouts.</p>
+                  <div class="tags"><span>HTML5</span><span>CSS3</span><span>Flexbox</span></div>
+                  <div class="project-card-links">
+                    <a href="https://cooking-wave.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Cooking Wave live site">Live site <i class="fa-solid fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i></a>
+                    <a href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer" aria-label="Cooking Wave on GitHub">GitHub <i class="fa-brands fa-github ms-1" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 reveal">
+              <article class="project-card project-react project-card-roadmap h-100">
+                <div class="project-card-img">
+                  <img src="./image/new-project-img.webp" alt="Next React Project roadmap preview" loading="lazy">
+                </div>
+                <div class="project-card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-1">
+                    <h3>React &amp; AI Project</h3>
+                    <span class="status-pill">In Progress</span>
+                  </div>
+                  <p>Developing interactive full-stack applications with React components, Node.js backend endpoints, and SQL database integration.</p>
+                  <div class="tags"><span>React</span><span>Node.js</span><span>SQL</span><span>AI APIs</span></div>
+                  <div class="project-card-links">
+                    <a href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">Follow progress on GitHub <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -244,45 +303,83 @@
     <section class="section github" id="github" aria-labelledby="github-title">
       <div class="container">
         <h2 class="section-title reveal" id="github-title">My code lives on GitHub</h2>
-        <p class="section-sub reveal">Every project I build is tracked with Git and pushed to GitHub. This section loads straight from my account, so it is always up to date.</p>
+        <p class="section-sub reveal">Every project I build is tracked with Git and pushed to GitHub. This section loads directly from my profile via GitHub's API.</p>
         <div class="row g-4 mt-3">
           <div class="col-12 col-lg-4 reveal">
             <div class="github-stats h-100">
-              <p class="github-number gh-count">0</p>
+              <p class="github-number gh-count">--</p>
               <p class="github-label">public repositories</p>
               <dl class="github-meta">
                 <div>
                   <dt>Last push</dt>
-                  <dd class="mb-0 gh-last-push">Loading</dd>
+                  <dd class="mb-0 gh-last-push">Loading...</dd>
                 </div>
                 <div>
                   <dt>First repository</dt>
-                  <dd class="mb-0 gh-since">Loading</dd>
+                  <dd class="mb-0 gh-since">Loading...</dd>
                 </div>
               </dl>
-              <a class="button button-primary" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">View my profile</a>
+              <a class="button button-primary w-100 text-center" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github me-2" aria-hidden="true"></i> View my GitHub
+              </a>
             </div>
           </div>
           <div class="col-12 col-lg-8 reveal">
             <ul class="gh-list h-100">
-              <li>Loading repositories</li>
+              <li class="gh-skeleton">Loading repositories...</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section contact" id="contact">
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-10 col-lg-8 contact-inner reveal">
-            <h2 class="section-title" id="contact-title">Let's work together</h2>
-            <p class="contact-lead my-3">I'm open to internships. I want to work on real projects, learn from a team, and keep growing toward full-stack development. If you have an opportunity or just want to talk about web development, send me a message and I'll reply as soon as I can.</p>
-            <a class="contact-email" href="mailto:rehmanali.aidev@gmail.com">rehmanali.aidev@gmail.com</a>
-            <div class="d-flex flex-wrap gap-3 mt-4">
-              <a class="button button-primary" href="mailto:rehmanali.aidev@gmail.com">Email me</a>
-              <button class="button button-secondary copy-email" type="button">Copy email</button>
-              <a class="button button-secondary" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="contact-card reveal">
+          <div class="row g-4 align-items-center">
+            <div class="col-12 col-lg-7">
+              <span class="contact-pill"><i class="fa-solid fa-bolt me-1" aria-hidden="true"></i> Available for Opportunities</span>
+              <h2 class="section-title reveal mt-3" id="contact-title">Let's build together</h2>
+              <p class="contact-lead mt-3">I'm actively looking for an internship where I can contribute to real web projects, learn from seasoned developers, and grow toward full-stack development. Feel free to reach out directly.</p>
+              <div class="contact-email-wrap mt-4">
+                <a class="contact-email" href="mailto:rehmanali.aidev@gmail.com">rehmanali.aidev@gmail.com</a>
+              </div>
+              <div class="d-flex flex-wrap gap-3 mt-4">
+                <a class="button button-primary" href="mailto:rehmanali.aidev@gmail.com">
+                  <i class="fa-solid fa-paper-plane me-2" aria-hidden="true"></i> Send Email
+                </a>
+                <button class="button button-secondary copy-email" type="button" aria-label="Copy email address to clipboard">
+                  <i class="fa-regular fa-copy me-2" aria-hidden="true"></i> Copy email
+                </button>
+                <a class="button button-secondary" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-github me-2" aria-hidden="true"></i> GitHub
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-5">
+              <div class="contact-card-side">
+                <div class="status-box mb-3">
+                  <span class="status-dot"></span>
+                  <div>
+                    <strong>Status: Open to work</strong>
+                    <p class="mb-0 text-muted">Ready for remote or local internship</p>
+                  </div>
+                </div>
+                <div class="status-box mb-3">
+                  <i class="fa-solid fa-location-dot status-icon" aria-hidden="true"></i>
+                  <div>
+                    <strong>Education &amp; Base</strong>
+                    <p class="mb-0 text-muted">CTTC CIT Diploma Program</p>
+                  </div>
+                </div>
+                <div class="status-box">
+                  <i class="fa-solid fa-code status-icon" aria-hidden="true"></i>
+                  <div>
+                    <strong>Core Focus</strong>
+                    <p class="mb-0 text-muted">JavaScript, React, Node.js, and SQL</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -297,26 +394,28 @@
           <svg class="brand-icon" viewBox="10 8 54 64" width="22" height="26" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter" aria-hidden="true">
             <path d="M18 66V14H44L58 26V34L44 46H18M40 46L56 66"/>
           </svg>
+          <span class="brand-name">Rehman Ali</span>
         </a>
-        <p class="footer-copy">&copy; 2026 Rehman Ali. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 Rehman Ali. Built with semantic HTML, modern CSS, and vanilla JS.</p>
       </div>
       <div class="footer-links d-flex align-items-center gap-3">
-        <a class="footer-social-link" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
+        <a class="footer-social-link" href="https://github.com/rehmanali-aidev" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
           <span>GitHub</span>
         </a>
-        <a class="footer-social-link" href="mailto:rehmanali.aidev@gmail.com" aria-label="Email Me">
-          <i class="fa-solid fa-envelope"></i>
+        <a class="footer-social-link" href="mailto:rehmanali.aidev@gmail.com" aria-label="Email Rehman Ali">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
           <span>Email</span>
         </a>
         <a class="footer-back-to-top" href="#top" aria-label="Back to top">
-          <i class="fa-solid fa-arrow-up"></i>
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
         </a>
       </div>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
   <div class="copy-notice" role="status" aria-live="polite"></div>
-  <script src="js/script.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
