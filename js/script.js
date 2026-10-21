@@ -27,19 +27,6 @@ if (themeBtn) {
     });
 }
 
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-
-document.querySelectorAll('.reveal').forEach((item) => {
-    revealObserver.observe(item);
-});
-
 const copyButton = document.querySelector('.copy-email');
 const copyNotice = document.querySelector('.copy-notice');
 let noticeTimer;
