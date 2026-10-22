@@ -799,12 +799,16 @@ body.dark-theme .project-react {
   gap: 5px;
 }
 .tags span{
-  background:  var(--navy);
+  background:  var(--ice);
   font-family:var(--font-display);
   padding: 0.3rem;
-  color: var(--muted);
+  color: var(--navy);
   border-radius: 20px;
   border: 1px solid var(--accent);
+}
+body.dark-theme .tags span{
+  background:var(--navy);
+  color: var(--muted);
 }
 
 .status-pill {

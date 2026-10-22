@@ -84,7 +84,7 @@ async function loadGithub() {
             throw new Error('GitHub API response not OK');
         }
         const repos = await response.json();
-
+        console.log(repos)
         if (count) count.textContent = repos.length;
         if (lastPush && repos.length > 0) lastPush.textContent = timeAgo(repos[0].pushed_at);
 
