@@ -1029,7 +1029,9 @@ body.dark-theme .tags span{
   border-radius: 18px;
   padding: 28px;
 }
-
+body.dark-theme .contact-card-side .text-muted{
+  color: var(--ice) !important;
+}
 .status-box {
   display: flex;
   align-items: flex-start;
