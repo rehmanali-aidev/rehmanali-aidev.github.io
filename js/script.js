@@ -84,7 +84,6 @@ async function loadGithub() {
             throw new Error('GitHub API response not OK');
         }
         const repos = await response.json();
-        console.log(repos)
         if (count) count.textContent = repos.length;
         if (lastPush && repos.length > 0) lastPush.textContent = timeAgo(repos[0].pushed_at);
 
@@ -94,7 +93,8 @@ async function loadGithub() {
         }
 
         list.innerHTML = '';
-        repos.slice(0, 6).forEach((repo) => {
+        const d_repo = repos.slice(0,6)
+        d_repo.forEach((repo) => {
             const item = document.createElement('li');
             const info = document.createElement('div');
             const link = document.createElement('a');
@@ -125,3 +125,47 @@ async function loadGithub() {
 }
 
 loadGithub();
+
+const navSections = document.querySelectorAll('section[id]');
+const bottomNavLinks = document.querySelectorAll('.bottom-nav-link');
+const topNavLinks = document.querySelectorAll('.nav-link');
+
+function highlightNavigation() {
+    const scrollPosition = window.scrollY + 140;
+    let activeId = '';
+
+    navSections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            activeId = section.getAttribute('id');
+        }
+    });
+
+    bottomNavLinks.forEach((link) => {
+        if (link.getAttribute('href') === '#' + activeId) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    topNavLinks.forEach((link) => {
+        if (link.getAttribute('href') === '#' + activeId) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+bottomNavLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+        bottomNavLinks.forEach((l) => l.classList.remove('active'));
+        link.classList.add('active');
+    });
+});
+
+window.addEventListener('scroll', highlightNavigation, { passive: true });
+window.addEventListener('resize', highlightNavigation);
+highlightNavigation();
